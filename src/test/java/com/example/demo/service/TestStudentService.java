@@ -61,7 +61,6 @@ public class TestStudentService {
         request.setSemester(1);
 
         when(userRepository.findByEmail(request.getEmail())).thenReturn(Optional.empty());
-        // avoid "might be null" warning by using Mockito matcher for CharSequence
         when(passwordEncoder.encode(org.mockito.ArgumentMatchers.any(CharSequence.class))).thenReturn("encodedPassword");
 
         User savedUser = new User();
@@ -88,6 +87,9 @@ public class TestStudentService {
         assertEquals(savedUser.getId(), result.getUser().getId());
         assertEquals(request.getStudentNumber(), result.getStudentNumber());
         assertEquals(request.getDepartment(), result.getDepartment());
+
     }
+
+
 
 }
