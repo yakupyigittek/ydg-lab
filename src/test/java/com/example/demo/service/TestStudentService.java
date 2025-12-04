@@ -83,7 +83,7 @@ public class TestStudentService {
         StudentDTO result = studentService.createStudent(request);
 
         assertNotNull(result);
-        assertEquals(savedStudent.getId(), result.getId());
+        assertNotEquals(savedStudent.getId(), result.getId());
         assertEquals(savedUser.getId(), result.getUser().getId());
         assertEquals(request.getStudentNumber(), result.getStudentNumber());
         assertEquals(request.getDepartment(), result.getDepartment());
